@@ -1,8 +1,3 @@
-# <<EOF 쓰는 이유
-# entrypoint, cmd차이
-# entrypoint, cmd 같이 쓰는 이유
-# COPY 2번 나눠서 하는 이유
-
 FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
 WORKDIR /code

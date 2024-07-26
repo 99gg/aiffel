@@ -1,0 +1,21 @@
+# docker-compose up -d 로 실행
+
+services:
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    ports:
+      - '6379:6379'
+    restart: 'no'
+
+  web:
+    build:
+      context: .
+      target: builder
+    environment:
+      PORT: 8000
+    ports:
+      - '8000:8000'
+    restart: 'no'
+    depends_on:
+      - redis

@@ -1,0 +1,10 @@
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql
+    container_name: postgres1234
+    volumes:
+      - ./init-postgresql.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - '5432:5432'

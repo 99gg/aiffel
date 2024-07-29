@@ -5,12 +5,11 @@
 docker compose up -d
 
 
-# container shell 접속
+# container shell 접속. 이때 컨테이너 이름은 docker-compose.yml에 postgres1234로 설정되어있다.
 docker exec -it postgres1234 sh
 
-# postgresql 접속
+# postgresql 접속한다.
 psql -U postgres
-
 ```
 
 ```psql

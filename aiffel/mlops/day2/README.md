@@ -9,15 +9,24 @@ docker compose up -d
 docker exec -it postgres1234 sh
 
 # postgresql 접속
-su - postgres
 psql -U postgres
 
-# \list
+```
 
+```psql
+\list
 ```
 
 ![postgres database list](image.png)
 
-```sql
-
+```psql
+\c postgres
 ```
+
+![connect to postgres](image-1.png)
+
+```psql
+select * from users;
+```
+
+![alt text](image-2.png)

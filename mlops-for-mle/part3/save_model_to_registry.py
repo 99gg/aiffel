@@ -29,7 +29,9 @@ df = pd.read_sql("SELECT * FROM iris_data ORDER BY id DESC LIMIT 100", db_connec
 
 X = df.drop(["id", "timestamp", "target"], axis="columns")
 y = df["target"]
-X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, random_state=2022)
+X_train, X_valid, y_train, y_valid = train_test_split(
+    X, y, train_size=0.8, random_state=2022
+)
 
 # 2. model development and train
 model_pipeline = Pipeline([("scaler", StandardScaler()), ("svc", SVC())])
@@ -51,7 +53,9 @@ args = parser.parse_args()
 
 mlflow.set_experiment("new-exp")
 
-signature = mlflow.models.signature.infer_signature(model_input=X_train, model_output=train_pred)
+signature = mlflow.models.signature.infer_signature(
+    model_input=X_train, model_output=train_pred
+)
 input_sample = X_train.iloc[:10]
 
 with mlflow.start_run():

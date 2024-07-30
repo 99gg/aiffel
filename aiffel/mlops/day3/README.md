@@ -115,3 +115,5 @@ from netflix_titles
 where title like '%winter%'
 ;
 ```
+
+![alt text](image.png)

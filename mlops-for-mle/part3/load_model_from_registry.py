@@ -16,7 +16,9 @@ os.environ["AWS_SECRET_ACCESS_KEY"] = "miniostorage"
 # 1. load model from mlflow
 parser = ArgumentParser()
 parser.add_argument("--model-name", dest="model_name", type=str, default="sk_model")
-parser.add_argument("--run-id", dest="run_id", type=str)
+parser.add_argument(
+    "--run-id", dest="run_id", type=str, default="674de78e24e743d9a20abea4eea01007"
+)
 args = parser.parse_args()
 
 model_pipeline = mlflow.sklearn.load_model(f"runs:/{args.run_id}/{args.model_name}")
@@ -26,7 +28,9 @@ df = pd.read_csv("data.csv")
 
 X = df.drop(["id", "timestamp", "target"], axis="columns")
 y = df["target"]
-X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, random_state=2022)
+X_train, X_valid, y_train, y_valid = train_test_split(
+    X, y, train_size=0.8, random_state=2022
+)
 
 # 3. predict results
 train_pred = model_pipeline.predict(X_train)

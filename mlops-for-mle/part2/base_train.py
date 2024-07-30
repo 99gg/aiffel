@@ -8,12 +8,15 @@ from sklearn.svm import SVC
 
 # 1. get data
 X, y = load_iris(return_X_y=True, as_frame=True)
-X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, random_state=2022)
+X_train, X_valid, y_train, y_valid = train_test_split(
+    X, y, train_size=0.8, random_state=2022
+)
 
 # 2. model development and train
 scaler = StandardScaler()
 classifier = SVC()
 
+# 서로 다른 함수를 쓰는이유?
 scaled_X_train = scaler.fit_transform(X_train)
 scaled_X_valid = scaler.transform(X_valid)
 classifier.fit(scaled_X_train, y_train)
